@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Navbar from "./components/Navbar.jsx";
 import CustomCarousel from "./components/Carousel.jsx";
-import Cards from "./components/Cards.jsx";
+import Cards from "./components/cards.jsx";
 import Packages from "./components/Packages.jsx";
 import PackageCards from "./components/PackageCards.jsx";
 import Alliance from "./components/Alliance.jsx";
