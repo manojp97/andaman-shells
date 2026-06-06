@@ -50,7 +50,7 @@ const FloatingWidget = () => {
 
       {/* Call */}
       <a
-        href="tel:+919599227385"
+        href="tel:+919756368492"
         className="w-40 bg-green-600 text-white py-3 rounded-lg text-center shadow-lg"
       >
         Call Now
@@ -58,7 +58,7 @@ const FloatingWidget = () => {
 
       {/* WhatsApp */}
       <a
-        href="https://wa.me/919599227385"
+        href="https://wa.me/919756368492"
         target="_blank"
         rel="noreferrer"
         className="w-40 bg-sky-500 text-white py-3 rounded-lg text-center shadow-lg"
