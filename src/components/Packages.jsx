@@ -10,67 +10,60 @@ const Packages = ({ setActiveTab }) => {
   };
 
   return (
-    <div className="w-full px-4 sm:px-8 lg:px-46 py-10">
+    <Tabs value={value} onValueChange={handleChange} className="w-full">
+      <div className="w-full">
+        <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent mb-6 px-2 h-auto sm:mx-46">
+          <TabsTrigger
+            value="all"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            All
+          </TabsTrigger>
 
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
-        Our Exclusive Packages
-      </h1>
+          <TabsTrigger
+            value="honeymoon"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            Honeymoon Package
+          </TabsTrigger>
 
-      <Tabs value={value} onValueChange={handleChange} className="w-full">
+          <TabsTrigger
+            value="family"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            Family Packages
+          </TabsTrigger>
 
-        {/* Tabs Container */}
-        <div className="w-full overflow-x-auto">
+          <TabsTrigger
+            value="women"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            Women Package
+          </TabsTrigger>
 
-          <TabsList className="flex w-max min-w-full gap-2 bg-transparent mb-6 px-2">
+          <TabsTrigger
+            value="golden"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            Golden Age Package
+          </TabsTrigger>
 
-            <TabsTrigger value="all"
-              className="whitespace-nowrap data-[state=active]:bg-cyan-600 data-[state=active]:text-white hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              All
-            </TabsTrigger>
+          <TabsTrigger
+            value="couple"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            Couple Friendly Package
+          </TabsTrigger>
 
-            <TabsTrigger value="honeymoon"
-              className="whitespace-nowrap data-[state=active]:bg-cyan-600 data-[state=active]:text-white hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              Honeymoon Package
-            </TabsTrigger>
-
-            <TabsTrigger value="family"
-              className="whitespace-nowrap data-[state=active]:bg-cyan-600 data-[state=active]:text-white hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              Family Packages
-            </TabsTrigger>
-
-            <TabsTrigger value="women"
-              className="whitespace-nowrap  data-[state=active]:bg-cyan-600 data-[state=active]:text-white hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              Women Package
-            </TabsTrigger>
-
-            <TabsTrigger value="golden"
-              className="whitespace-nowrap data-[state=active]:bg-cyan-600 data-[state=active]:text-white  hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              Golden Age Package
-            </TabsTrigger>
-
-            <TabsTrigger value="couple"
-              className="whitespace-nowrap data-[state=active]:bg-cyan-600 data-[state=active]:text-white hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              Couple Friendly Package
-            </TabsTrigger>
-
-            <TabsTrigger value="luxury"
-              className="whitespace-nowrap data-[state=active]:bg-cyan-600 data-[state=active]:text-white hover:bg-cyan-600 rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black"
-            >
-              Luxury Package
-            </TabsTrigger>
-
-          </TabsList>
-
-        </div>
-
-      </Tabs>
-    </div>
+          <TabsTrigger
+            value="luxury"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
+          >
+            Luxury Package
+          </TabsTrigger>
+        </TabsList>
+      </div>
+    </Tabs>
   );
 };
 

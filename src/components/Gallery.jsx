@@ -18,7 +18,7 @@ const Gallery = () => {
         Photo Gallery
       </h2>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-3 gap-6 sm:grid-cols-3 lg:grid-cols-3">
         {images.map((image, index) => (
           <div
             key={index}
@@ -28,7 +28,7 @@ const Gallery = () => {
             <img
               src={image}
               alt={`Gallery ${index + 1}`}
-              className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="h-24 sm:h-32 md:h-48 lg:h-72  w-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
 
             {/* Overlay */}
