@@ -4,7 +4,6 @@ const Form = () => {
   return (
     <div className="w-full px-4 py-10">
       <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-
         {/* Left Side - Google Map */}
         <div className="w-full h-87.5 lg:h-125 overflow-hidden  shadow">
           <iframe
@@ -20,12 +19,13 @@ const Form = () => {
 
         {/* Right Side - Form */}
         <div className="w-full bg-white  shadow p-4">
-          <h2 className="text-3xl font-bold text-center mb-6">
-            Contact Us
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
 
-          <form className="space-y-6">
-
+          <form
+            className="space-y-6"
+            action="https://formsubmit.co/manojsingh1420809@gmail.com"
+            method="POST"
+          >
             <input
               type="text"
               placeholder="Enter your name"
@@ -56,10 +56,8 @@ const Form = () => {
             >
               Send Message
             </button>
-
           </form>
         </div>
-
       </div>
     </div>
   );
