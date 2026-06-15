@@ -102,81 +102,142 @@ export default function ContactSettings() {
         {/* HEADER */}
         <header className="flex h-16 items-center gap-3 border-b px-4">
           <SidebarTrigger />
-          <h1 className="text-xl font-bold">
-            Contact Settings
-          </h1>
+          <h1 className="text-xl font-bold">Contact Settings</h1>
         </header>
 
         {/* CONTENT */}
         <div className="p-4 md:p-6">
           <Card className="max-w-5xl p-6 mx-auto border rounded">
-
             <form onSubmit={handleSubmit} className="space-y-5">
-
               {/* PHONE + WHATSAPP */}
               <div className="grid md:grid-cols-2 gap-4">
-                <Input
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                />
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    Phone Number
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Enter phone number"
+                  />
+                </div>
 
-                <Input
-                  name="whatsapp"
-                  value={form.whatsapp}
-                  onChange={handleChange}
-                  placeholder="WhatsApp Number"
-                />
+                <div>
+                  <label
+                    htmlFor="whatsapp"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    WhatsApp Number
+                  </label>
+                  <Input
+                    id="whatsapp"
+                    name="whatsapp"
+                    value={form.whatsapp}
+                    onChange={handleChange}
+                    placeholder="Enter WhatsApp number"
+                  />
+                </div>
               </div>
 
               {/* EMAIL + WEBSITE */}
               <div className="grid md:grid-cols-2 gap-4">
-                <Input
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Email"
-                />
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Enter email address"
+                  />
+                </div>
 
+                <div>
+                  <label
+                    htmlFor="website"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    Website
+                  </label>
+                  <Input
+                    id="website"
+                    name="website"
+                    value={form.website}
+                    onChange={handleChange}
+                    placeholder="Enter website URL"
+                  />
+                </div>
+              </div>
+
+              {/* ADDRESS LINE 1 */}
+              <div>
+                <label
+                  htmlFor="addressLine1"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Address Line 1
+                </label>
                 <Input
-                  name="website"
-                  value={form.website}
+                  id="addressLine1"
+                  name="addressLine1"
+                  value={form.addressLine1}
                   onChange={handleChange}
-                  placeholder="Website"
+                  placeholder="House / Building / Street"
                 />
               </div>
 
-              {/* ADDRESS */}
-              <Input
-                name="addressLine1"
-                value={form.addressLine1}
-                onChange={handleChange}
-                placeholder="Address Line 1"
-              />
-
-              <Input
-                name="addressLine2"
-                value={form.addressLine2}
-                onChange={handleChange}
-                placeholder="Address Line 2"
-              />
+              {/* ADDRESS LINE 2 */}
+              <div>
+                <label
+                  htmlFor="addressLine2"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Address Line 2
+                </label>
+                <Input
+                  id="addressLine2"
+                  name="addressLine2"
+                  value={form.addressLine2}
+                  onChange={handleChange}
+                  placeholder="Area / Landmark / City"
+                />
+              </div>
 
               {/* MAP LINK */}
-              <textarea
-                name="mapsLink"
-                value={form.mapsLink}
-                onChange={handleChange}
-                rows={4}
-                placeholder="Google Maps Link"
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-              />
+              <div>
+                <label
+                  htmlFor="mapsLink"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Google Maps Link
+                </label>
+
+                <textarea
+                  id="mapsLink"
+                  name="mapsLink"
+                  value={form.mapsLink}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="Paste Google Maps location link here"
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                />
+              </div>
 
               {/* SUBMIT BUTTON */}
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full border rounded bg-blue-500 hover:bg-blue-600 cursor-pointer text-white"
+                className="w-full md:w-auto border rounded bg-blue-500 hover:bg-blue-600 cursor-pointer text-white"
               >
                 {loading ? (
                   <>
@@ -187,9 +248,7 @@ export default function ContactSettings() {
                   "Save Contact Settings"
                 )}
               </Button>
-
             </form>
-
           </Card>
         </div>
       </SidebarInset>

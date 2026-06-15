@@ -108,7 +108,7 @@ const PackageCards = ({ image, title }) => {
             </Button>
           </DialogTrigger>
 
-          <DialogContent className="sm:max-w-[500px] bg-white border-white">
+          <DialogContent className="sm:max-w-125  bg-white border-white">
             <DialogHeader>
               <DialogTitle>Contact Us</DialogTitle>
             </DialogHeader>
