@@ -1,6 +1,22 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import API from "@/api/api";
 
 const Regret = () => {
+  const [contactInfo, setContactInfo] = useState(null);
+
+  useEffect(() => {
+    fetchContactInfo();
+  }, []);
+
+  const fetchContactInfo = async () => {
+    try {
+      const res = await API.get("/contact-info");
+      setContactInfo(res.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h2 className="mb-6 text-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -29,10 +45,10 @@ const Regret = () => {
               className="w-10 h-10 mb-3"
             />
             <a
-              href="tel:+919599227385"
+              href={`tel:${contactInfo?.phone}`}
               className="text-base sm:text-lg hover:text-sky-500"
             >
-              Call: +91 9599227385
+              Call: {contactInfo?.phone}
             </a>
             <p className="text-sm sm:text-base">Monday-Saturday (9am-7pm)</p>
           </div>
@@ -49,12 +65,12 @@ const Regret = () => {
             />
 
             <a
-              href="mailto:shellsandaman@gmail.com"
+              href={`mailto:${contactInfo?.email}`}
               className="text-base sm:text-lg hover:text-sky-500"
             >
-              Email: shellsandaman@gmail.com
+              Email: {contactInfo?.email}
             </a>
-            <p className="text-sm sm:text-base">Web: www.andamanshells.com</p>
+            <p className="text-sm sm:text-base">Web: {contactInfo?.website}</p>
           </div>
 
           {/* Location */}
@@ -68,16 +84,17 @@ const Regret = () => {
               className="w-10 h-10 mb-3"
             />
             <a
-              href="https://maps.google.com/?q=Anand+Marg+Road+Junglighat+Sri+Vijaya+Puram+Andaman+744103"
+              href={contactInfo?.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
               className="text-center hover:text-sky-500"
             >
               <p className="text-base sm:text-lg">
-                Location: Anand Marg Road, Junglighat,
+                Location: {contactInfo?.addressLine1}
               </p>
+
               <p className="text-sm sm:text-base">
-                Sri Vijaya Puram, A & N Islands 744103
+                {contactInfo?.addressLine2}
               </p>
             </a>
           </div>

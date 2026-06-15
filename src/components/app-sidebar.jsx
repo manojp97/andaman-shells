@@ -11,6 +11,7 @@ import {
   Star,
   Phone,
   LogOut,
+  Settings,
 } from "lucide-react";
 
 import {
@@ -55,6 +56,12 @@ const menuItems = [
     url: "/admin/contact",
     icon: Phone,
   },
+  {
+    title: "Settings",
+    url: "/admin/contact-settings",
+    icon: Settings,
+  },
+ 
 ];
 
 export function AppSidebar(props) {

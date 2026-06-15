@@ -43,7 +43,7 @@ export default function Navbar() {
               <a href="#faq" className="hover:text-sky-400 transition">
                 FAQ
               </a>
-              <a href="#contact" className="hover:text-sky-400 transition">
+              <a href="#enquiry-form" className="hover:text-sky-400 transition">
                 Contact Us
               </a>
             </div>

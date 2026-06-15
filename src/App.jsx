@@ -10,6 +10,7 @@ import GalleryManager from "./admin/GalleryManager";
 import FAQManager from "./admin/FAQManager";
 import TestimonialsManager from "./admin/TestimonialsManager";
 import ContactManager from "./admin/ContactManager";
+import ContactSettings from "./admin/ContactSettings";
 import Page from "./dashboard/page";
 import AdminLogin from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegister";
@@ -73,6 +74,7 @@ function App() {
               </AdminRoute>
             }
           />
+          <Route path="/admin/contact-settings" element={<ContactSettings />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

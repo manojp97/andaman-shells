@@ -55,7 +55,7 @@ export default function CustomCarousel() {
                         <button
                           onClick={() =>
                             document
-                              .getElementById("contact")
+                              .getElementById("enquiry-form")
                               ?.scrollIntoView({ behavior: "smooth" })
                           }
                           className="w-full sm:w-auto rounded-full bg-sky-400 px-6 py-3 font-bold text-black hover:bg-sky-300 transition"

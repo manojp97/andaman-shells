@@ -11,6 +11,7 @@ export default function ContactForm() {
   });
 
   const [loading, setLoading] = useState(false);
+  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -77,7 +78,7 @@ export default function ContactForm() {
         <div className="w-full max-w-xl mx-auto bg-white shadow p-6 rounded-lg">
           <h2 className="text-2xl font-bold text-center mb-6">Contact Us</h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" id="enquiry-form">
             <div>
               <label htmlFor="name" className="block mb-2 font-medium">
                 Your Name

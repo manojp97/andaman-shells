@@ -12,7 +12,7 @@ const Packages = ({ setActiveTab }) => {
   return (
     <Tabs value={value} onValueChange={handleChange} className="w-full">
       <div className="w-full">
-        <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent mb-6 px-2 h-auto sm:mx-46">
+        <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent mb-6 px-2 h-auto mx-auto max-w-screen-2xl">
           <TabsTrigger
             value="all"
             className="whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm md:text-base border border-black data-[state=active]:bg-cyan-600 data-[state=active]:text-white"
