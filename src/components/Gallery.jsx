@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 
-const images = [
-  "/g1.jpg",
-  "/g2.jpg",
-  "/g3.jpg",
-  "/g4.jpg",
-  "/g5.jpg",
-  "/g6.jpg",
-];
-
-const Gallery = () => {
+const Gallery = ({ images, IMAGE_URL }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const getImageUrl = (img) => {
+    if (!img) return "";
+    if (img.startsWith("http")) return img;
+    if (img.startsWith("/")) return `${IMAGE_URL}${img}`;
+    return `${IMAGE_URL}/uploads/${img}`;
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">
@@ -19,22 +17,24 @@ const Gallery = () => {
       </h2>
 
       <div className="grid grid-cols-3 gap-6 sm:grid-cols-3 lg:grid-cols-3">
-        {images.map((image, index) => (
+        {images?.map((item) => (
           <div
-            key={index}
-            onClick={() => setSelectedImage(image)}
-            className="group relative overflow-hidden shadow-lg cursor-pointer "
+            key={item._id}
+            onClick={() => setSelectedImage(item.image)}
+            className="group relative overflow-hidden shadow-lg cursor-pointer"
           >
             <img
-              src={image}
-              alt={`Gallery ${index + 1}`}
-              className="h-24 sm:h-32 md:h-48 lg:h-72  w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src={item.image}
+              alt="Andaman Islands Travel Gallery"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="400"
+              className="h-24 sm:h-32 md:h-48 lg:h-72 w-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
 
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
 
-            {/* Text */}
             <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 transition-all duration-500 group-hover:opacity-100">
               <h3 className="text-lg font-semibold text-center">
                 CLICK TO VIEW FULL IMAGE
@@ -44,7 +44,6 @@ const Gallery = () => {
         ))}
       </div>
 
-      {/* Full Image Modal */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
@@ -59,7 +58,8 @@ const Gallery = () => {
 
           <img
             src={selectedImage}
-            alt="Full View"
+            alt="Andaman Travel Destination Full View"
+            decoding="async"
             className="max-h-[90vh] max-w-[90vw] rounded-xl"
             onClick={(e) => e.stopPropagation()}
           />

@@ -1,66 +1,148 @@
-import React from "react";
+import { useState } from "react";
+import API from "@/api/api";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
-const Form = () => {
+export default function ContactForm() {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //  Strong validation
+    if (!form.name.trim() || !form.phone.trim() || !form.message.trim()) {
+      alert("All fields are required");
+      return;
+    }
+
+    if (form.phone.length < 10) {
+      alert("Invalid phone number");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      //  API CALL
+      const res = await API.post("/contacts", {
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        message: form.message.trim(),
+      });
+
+      console.log("CONTACT RESPONSE:", res.data);
+
+      alert("Message sent successfully!");
+
+      // reset form
+      setForm({
+        name: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      console.log("ERROR:", error.response?.data || error.message);
+      alert(error.response?.data?.message || "Failed to send message");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-full px-4 py-10">
       <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Left Side - Google Map */}
-        <div className="w-full h-87.5 lg:h-125 overflow-hidden  shadow">
+        {/* Map */}
+        <div className="w-full h-100 overflow-hidden shadow">
           <iframe
             title="Google Map"
             src="https://www.google.com/maps?q=Sri%20Vijaya%20Puram%20Andaman%20and%20Nicobar%20India&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
-            allowFullScreen=""
             loading="lazy"
-          ></iframe>
+          />
         </div>
 
-        {/* Right Side - Form */}
-        <div className="w-full bg-white  shadow p-4">
-          <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
+        {/* Form */}
+        <div className="w-full max-w-xl mx-auto bg-white shadow p-6 rounded-lg">
+          <h2 className="text-2xl font-bold text-center mb-6">Contact Us</h2>
 
-          <form
-            className="space-y-6"
-            action="https://formsubmit.co/manojsingh1420809@gmail.com"
-            method="POST"
-          >
-            <input
-              type="text"
-              placeholder="Enter your name"
-              className="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
-            />
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block mb-2 font-medium">
+                Your Name
+              </label>
 
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
-            />
+              <input
+                id="name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                className="w-full border p-3 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="block mb-2 font-medium">
+                Phone Number
+              </label>
 
-            <input
-              type="tel"
-              placeholder="Enter your phone number"
-              className="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
-            />
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="Your Phone"
+                className="w-full border p-3 rounded"
+                required
+              />
+            </div>
 
-            <textarea
-              rows="5"
-              placeholder="Write your message..."
-              className="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
-            ></textarea>
+            <div>
+              <label htmlFor="message" className="block mb-2 font-medium">
+                Message
+              </label>
 
-            <button
+              <textarea
+                id="message"
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Your Message"
+                className="w-full border p-3 rounded"
+                required
+              />
+            </div>
+
+            <Button
               type="submit"
-              className="w-full bg-sky-500 text-white py-3 rounded font-semibold hover:bg-sky-600 transition"
+              className="w-full bg-blue-500 text-white rounded"
+              disabled={loading}
             >
-              Send Message
-            </button>
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
+            </Button>
           </form>
         </div>
       </div>
     </div>
   );
-};
-
-export default Form;
+}

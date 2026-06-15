@@ -6,19 +6,36 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const images = ["/Banner 1.jpg", "/banner2.jpg", "/banner3.jpg"];
+const images = [
+  {
+    src: "/Banner 1.jpg",
+    alt: "Andaman Tour Package",
+  },
+  {
+    src: "/banner2.jpg",
+    alt: "Havelock Island Beach",
+  },
+  {
+    src: "/banner3.jpg",
+    alt: "Port Blair Tourism",
+  },
+];
 
 export default function CustomCarousel() {
   return (
     <div className="w-full overflow-hidden">
       <ShadCarousel className="w-full">
         <CarouselContent className="ml-0">
-          {images.map((image, index) => (
+          {images.map((item, index) => (
             <CarouselItem key={index} className="pl-0">
               <div className="relative h-[70vh] md:h-[85vh] lg:h-screen w-full">
                 <img
-                  src={image}
-                  alt={`Slide ${index + 1}`}
+                  src={item.src}
+                  alt={item.alt}
+                  loading="eager"
+                  fetchPriority="high"
+                  width="1920"
+                  height="1080"
                   className="h-full w-full object-cover"
                 />
 

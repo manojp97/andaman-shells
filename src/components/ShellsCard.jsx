@@ -14,7 +14,11 @@ const ShellsCard = () => {
           <div className="w-full lg:w-1/2">
             <img
               src="/why-us.png"
-              alt="Why Choose Us"
+              alt="Benefits of Booking Andaman Tour Packages with Andaman Shells"
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="600"
               className="h-full w-full object-cover"
             />
           </div>
@@ -90,4 +94,3 @@ const ShellsCard = () => {
 };
 
 export default ShellsCard;
-

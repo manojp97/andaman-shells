@@ -8,7 +8,11 @@ const Cards = () => {
       <Card className="overflow-hidden  border-none ">
         <img
           src="/Picture1.jpg"
-          alt="Image 1"
+          alt="Andaman Islands Travel Information"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="600"
           className="w-full h-auto object-cover"
         />
       </Card>
