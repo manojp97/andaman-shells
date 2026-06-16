@@ -4,6 +4,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { AdminRoute, ProtectedRoute } from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
+// import Home from "./pages/Home";
+import Destination from "./pages/Destination";
 
 import PackageManager from "./admin/PackageManager";
 import GalleryManager from "./admin/GalleryManager";
@@ -75,6 +77,7 @@ function App() {
             }
           />
           <Route path="/admin/contact-settings" element={<ContactSettings />} />
+          <Route path="/destination/:slug" element={<Home />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

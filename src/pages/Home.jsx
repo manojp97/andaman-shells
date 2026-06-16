@@ -14,11 +14,24 @@ import Welcome from "../components/Welcome.jsx";
 import Regret from "../components/Regret.jsx";
 import Form from "../components/Form.jsx";
 import FloatingWidget from "../components/FloatingWidget.jsx";
+import Footer from "@/components/Footer.jsx";
+import { useParams } from "react-router-dom";
+import destinations from "@/data/destinations";
 
 import { Helmet } from "react-helmet-async";
 import API from "@/api/api";
 
 function Home() {
+ const { slug } = useParams();
+
+  const destinationData = slug
+    ? destinations[slug]
+    : null;
+
+  // console.log("slug:", slug);
+  // console.log("destinationData:", destinationData);
+
+  console.log(slug);
   const [activeTab, setActiveTab] = useState("all");
 
   const [packages, setPackages] = useState([]);
@@ -95,7 +108,9 @@ function Home() {
       <Helmet>
         {/* SEO */}
         <title>
-          Andaman Shells Tours & Travels | Best Andaman Tour Packages
+          {destinationData?.title
+            ? `${destinationData.title} | Andaman Shells`
+            : "Andaman Shells Tours & Travels"}
         </title>
 
         <meta
@@ -110,7 +125,7 @@ function Home() {
 
         <meta name="robots" content="index, follow" />
 
-        <link rel="canonical" href="https://andaman-shells-po8i.vercel.app/" />
+        <link rel="canonical" href="https://andaman-shells-phi.vercel.app/" />
 
         {/* Open Graph (Facebook, WhatsApp, LinkedIn, Telegram) */}
         <meta
@@ -125,16 +140,19 @@ function Home() {
 
         <meta property="og:type" content="website" />
 
-        <meta property="og:url" content="https://andaman-shells-po8i.vercel.app/" />
+        <meta
+          property="og:url"
+          content="https://andaman-shells-phi.vercel.app/"
+        />
 
         <meta
           property="og:image"
-          content="https://andaman-shells-po8i.vercel.app/og-image.jpg"
+          content="https://andaman-shells-phi.vercel.app/og-image.jpg"
         />
 
         <meta
           property="og:image:secure_url"
-          content="https://andaman-shells-po8i.vercel.app/og-image.jpg"
+          content="https://andaman-shells-phi.vercel.app/og-image.jpg"
         />
 
         <meta property="og:image:type" content="image/jpeg" />
@@ -161,7 +179,7 @@ function Home() {
 
         <meta
           name="twitter:image"
-          content="https://andaman-shells-po8i.vercel.app/og-image.jpg"
+          content="https://andaman-shells-phi.vercel.app/og-image.jpg"
         />
 
         {/* Mobile */}
@@ -172,7 +190,7 @@ function Home() {
 
       {/* HERO */}
       <section id="hero">
-        <CustomCarousel />
+        <CustomCarousel destination={destinationData} />
       </section>
 
       <Cards />
@@ -233,6 +251,7 @@ function Home() {
       </section>
 
       <FloatingWidget />
+      <Footer />
     </div>
   );
 }
